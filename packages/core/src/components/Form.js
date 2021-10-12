@@ -144,11 +144,24 @@ export default class Form extends Component {
     formData,
     schema = this.props.schema,
     additionalMetaSchemas = this.props.additionalMetaSchemas,
-    customFormats = this.props.customFormats
+    customFormats = this.props.customFormats,
+    uiSchema = this.props.uiSchema
   ) {
     const { validate, transformErrors } = this.props;
     const { rootSchema } = this.getRegistry();
-    const resolvedSchema = retrieveSchema(schema, rootSchema, formData);
+    const widget = uiSchema["ui:widget"];
+    const widgetSchema =
+      widget === "email" ||
+      widget === "password" ||
+      (typeof widget === "function" && widget.name === "RichText")
+        ? {
+            ...schema,
+            maxLength: undefined,
+            minLength: undefined,
+            pattern: undefined,
+          }
+        : schema;
+    const resolvedSchema = retrieveSchema(widgetSchema, rootSchema, formData);
     return validateFormData(
       formData,
       resolvedSchema,
@@ -408,7 +421,7 @@ export default class Form extends Component {
       this.formElement.dispatchEvent(
         new CustomEvent("submit", {
           cancelable: true,
-          bubbles: true
+          bubbles: true,
         })
       );
     }
