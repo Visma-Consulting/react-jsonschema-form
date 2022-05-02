@@ -93,7 +93,11 @@ const SelectWidget = ({
 
   if (!ariaLabel) {
     const element = options!.element as {label: string, title: string, useLabel: boolean};
-    ariaLabel = element.useLabel ? element.label : element.title;
+    ariaLabel = element
+      ? element.useLabel
+        ? element.label
+        : element.title
+      : "";
   }
 
   return (

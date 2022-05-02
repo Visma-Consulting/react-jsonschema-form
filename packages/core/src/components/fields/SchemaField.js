@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import * as types from "../../types";
 import {
   ADDITIONAL_PROPERTY_FLAG,
-  isSelect,
+  // isSelect,
   retrieveSchema,
   toIdSchema,
   getDefaultRegistry,
@@ -360,8 +360,8 @@ function SchemaFieldRender(props) {
     registry,
   };
 
-  const _AnyOfField = registry.fields.AnyOfField;
-  const _OneOfField = registry.fields.OneOfField;
+  //const _AnyOfField = registry.fields.AnyOfField;
+  //const _OneOfField = registry.fields.OneOfField;
 
   return (
     <FieldTemplate {...fieldProps}>
@@ -372,7 +372,7 @@ function SchemaFieldRender(props) {
         If the schema `anyOf` or 'oneOf' can be rendered as a select control, don't
         render the selection and let `StringField` component handle
         rendering
-      */}
+      }
         {schema.anyOf && !isSelect(schema) && (
           <_AnyOfField
             disabled={disabled}
@@ -411,7 +411,7 @@ function SchemaFieldRender(props) {
             schema={schema}
             uiSchema={uiSchema}
           />
-        )}
+        )*/}
       </React.Fragment>
     </FieldTemplate>
   );
