@@ -1,25 +1,15 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ErrorIcon from '@material-ui/icons/Error';
-import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
-
 import { ErrorListProps } from '@visma/rjsf-core';
+import { useMuiComponent } from '../MuiComponentContext';
 
 const ErrorList = ({ errors }: ErrorListProps) => {
   const intl = useIntl();
-
+  const { Box, Typography, List, ListItem, ListItemIcon, ListItemText, Paper, ErrorIcon } = useMuiComponent();
   return (
-    <Paper
-      elevation={2}>
-      <Box id="formula-validation-errors" role="alert" mb={2} p={2}>
-        <Typography component="h2" variant="h6">
+    <Paper elevation={2}>
+      <Box mb={2} p={2}>
+        <Typography variant="h6">
           {intl.formatMessage({defaultMessage: 'From validation failed'})}
         </Typography>
         <List dense={true}>
@@ -37,6 +27,6 @@ const ErrorList = ({ errors }: ErrorListProps) => {
       </Box>
     </Paper>
   );
-}
+};
 
 export default ErrorList;

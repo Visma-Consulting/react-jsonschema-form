@@ -12,6 +12,7 @@ import TextareaWidget from "../TextareaWidget/TextareaWidget";
 import TextWidget from "../TextWidget/TextWidget";
 import UpDownWidget from "../UpDownWidget/UpDownWidget";
 import URLWidget from "../URLWidget/URLWidget";
+import SubmitButton from "../SubmitButton/SubmitButton";
 import FileWidget from "../FileWidget/FileWidget";
 import { withPropagateChangeOnBlur } from "./withPropagateChangeOnBlur";
 
@@ -30,5 +31,6 @@ export default {
   TextWidget: withPropagateChangeOnBlur(TextWidget),
   UpDownWidget,
   URLWidget,
+  SubmitButton,
   FileWidget
 };

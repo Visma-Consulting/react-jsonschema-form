@@ -5,7 +5,8 @@ import { Form } from "semantic-ui-react";
 import DescriptionField from "../DescriptionField";
 import HelpField from "../HelpField";
 import RawErrors from "../RawErrors";
-import { getSemanticProps, MaybeWrap } from "../util";
+import WrapIfAdditional from './WrapIfAdditional';
+import { getSemanticProps,getSemanticErrorProps, MaybeWrap } from "../util";
 
 function FieldTemplate({
   id,
@@ -16,26 +17,35 @@ function FieldTemplate({
   label,
   rawErrors = [],
   rawHelp,
+  hidden,
   rawDescription,
   ...props
 }) {
   const semanticProps = getSemanticProps(props);
-  const { wrapLabel, wrapContent, errorOptions } = semanticProps;
+  const { wrapLabel, wrapContent } = semanticProps;
+  const errorOptions = getSemanticErrorProps(props);
+
+  if (hidden) {
+    return children;
+  }
+
   return (
-    <Form.Group key={id} widths="equal" grouped>
-      <MaybeWrap wrap={wrapContent} className="sui-field-content">
-        {children}
-        {displayLabel && rawDescription && (
-          <MaybeWrap wrap={wrapLabel} className="sui-field-label">
-            {rawDescription && (
-              <DescriptionField description={rawDescription} />
-            )}
-          </MaybeWrap>
-        )}
-        <HelpField helpText={rawHelp} id={utils.helpId(id)} />
-        <RawErrors errors={rawErrors} options={errorOptions} />
-      </MaybeWrap>
-    </Form.Group>
+    <WrapIfAdditional classNames={classNames} id={id} label={label} {...props}>
+      <Form.Group key={id} widths="equal" grouped>
+        <MaybeWrap wrap={wrapContent} className="sui-field-content">
+          {children}
+          {displayLabel && rawDescription && (
+            <MaybeWrap wrap={wrapLabel} className="sui-field-label">
+              {rawDescription && (
+                <DescriptionField description={rawDescription} />
+              )}
+            </MaybeWrap>
+          )}
+          <HelpField helpText={rawHelp} id={id + "__help"} />
+          <RawErrors errors={rawErrors} options={errorOptions} />
+        </MaybeWrap>
+      </Form.Group>
+    </WrapIfAdditional>
   );
 }
 

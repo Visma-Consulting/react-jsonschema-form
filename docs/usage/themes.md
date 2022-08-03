@@ -5,15 +5,15 @@ meaning that you must load the Bootstrap stylesheet on the page to view the form
 
 ## Supported themes
 
- Theme Name | Status | Package Name / Link
- ---------- | ------- | -----------
- Bootstrap 3 (default) | Published | `@visma/rjsf-core`
- Bootstrap 4 | Published | `@visma/rjsf-bootstrap-4`
- material-ui | Published | `@visma/rjsf-material-ui`
- fluent-ui | Published | `@visma/rjsf-fluent-ui`
- antd | Published | `@visma/rjsf-antd`
- Semantic UI | Published | `@visma/rjsf-semantic-ui`
-
+| Theme Name            | Status    | Package Name / Link |
+| --------------------- | --------- | ------------------- |
+| Bootstrap 3 (default) | Published | `@visma/rjsf-core`        |
+| Bootstrap 4           | Published | `@visma/rjsf-bootstrap-4` |
+| material-ui 4 & 5     | Published | `@visma/rjsf-material-ui` |
+| fluent-ui             | Published | `@visma/rjsf-fluent-ui`   |
+| antd                  | Published | `@vismarjsf-antd`        |
+| Semantic UI           | Published | `@visma/rjsf-semantic-ui` |
+| Chakra UI             | Published | `@visma/rjsf-chakra-ui`   |
 
 ## Using themes
 

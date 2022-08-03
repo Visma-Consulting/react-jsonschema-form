@@ -1,6 +1,6 @@
+import React from "react";
 import { utils } from "@visma/rjsf-core";
 import PropTypes from "prop-types";
-import React from "react";
 import { Form } from "semantic-ui-react";
 import { getSemanticProps } from "../util";
 
@@ -23,7 +23,12 @@ function EmailWidget(props) {
     options,
     formContext,
   } = props;
-  const semanticProps = getSemanticProps({ formContext, options });
+  const semanticProps = getSemanticProps({
+    schema,
+    uiSchema,
+    formContext,
+    options,
+ });
   // eslint-disable-next-line no-shadow
   const _onChange = ({ target: { value } }) =>
     onChange(value === "" ? options.emptyValue : value);
@@ -52,31 +57,4 @@ function EmailWidget(props) {
     />
   );
 }
-
-EmailWidget.defaultProps = {
-  options: {
-    semantic: {
-      fluid: true,
-      inverted: false,
-    },
-  },
-};
-
-
-
-
-EmailWidget.defaultProps = {
-  options: {
-    semantic: {
-      fluid: true,
-      inverted: false,
-    },
-  },
-};
-
-
-EmailWidget.propTypes = {
-  options: PropTypes.object,
-};
-
 export default EmailWidget;

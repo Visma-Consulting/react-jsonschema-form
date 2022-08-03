@@ -1,10 +1,13 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import Container from "react-bootstrap/Container";
 import { ObjectFieldTemplateProps } from "@visma/rjsf-core";
+import { utils } from '@visma/rjsf-core';
+import AddButton from "../AddButton/AddButton";
+
+const { canExpand } = utils;
 
 const ObjectFieldTemplate = ({
   DescriptionField,
@@ -15,13 +18,18 @@ const ObjectFieldTemplate = ({
   required,
   uiSchema,
   idSchema,
+  schema,
+  formData,
+  onAddClick,
+  disabled,
+  readonly
 }: ObjectFieldTemplateProps) => {
   return (
     <>
       {(uiSchema["ui:title"] || title) && (
         <TitleField
           id={`${idSchema.$id}-title`}
-          title={title}
+          title={uiSchema["ui:title"] || title}
           required={required}
         />
       )}
@@ -40,6 +48,17 @@ const ObjectFieldTemplate = ({
             <Col xs={12}> {element.content}</Col>
           </Row>
         ))}
+        {canExpand(schema, uiSchema, formData) ? (
+          <Row>
+            <Col xs={{ offset: 9, span: 3 }} className="py-4">
+              <AddButton
+                onClick={onAddClick(schema)}
+                disabled={disabled || readonly}
+                className="object-property-expand"
+              />
+            </Col>
+          </Row>
+        ) : null }
       </Container>
     </>
   );

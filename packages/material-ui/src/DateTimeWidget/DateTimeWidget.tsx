@@ -1,10 +1,8 @@
 import React from "react";
-import { utils } from "@visma/rjsf-core";
-import { TextWidgetProps } from "../TextWidget";
-
+import { utils, WidgetProps } from '@visma/rjsf-core';
 const { localToUTC, utcToLocal } = utils;
 
-const DateTimeWidget = (props: TextWidgetProps) => {
+const DateTimeWidget = (props: WidgetProps) => {
   const { registry } = props;
   const { TextWidget } = registry.widgets;
   const value = utcToLocal(props.value);

@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import { utils } from "@visma/rjsf-core";
-import PropTypes from "prop-types";
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { getSemanticProps } from "../util";
+import { utils } from "@visma/rjsf-core";
 const { getDisplayLabel } = utils;
 function TextareaWidget(props) {
   const {
@@ -24,7 +23,11 @@ function TextareaWidget(props) {
     uiSchema,
     formContext,
   } = props;
-  const semanticProps = getSemanticProps({ formContext, options });
+  const semanticProps = getSemanticProps({
+    formContext,
+    options,
+    defaultSchemaProps: { inverted: false }
+  });
   // eslint-disable-next-line no-shadow
   const _onChange = ({ target: { value } }) =>
     onChange && onChange(value === "" ? options.emptyValue : value);
@@ -54,17 +57,4 @@ function TextareaWidget(props) {
     />
   );
 }
-
-TextareaWidget.defaultProps = {
-  options: {
-    semantic: {
-      inverted: false,
-    },
-  },
-};
-
-TextareaWidget.propTypes = {
-  options: PropTypes.object,
-};
-
 export default TextareaWidget;
