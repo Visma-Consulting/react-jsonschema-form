@@ -50,7 +50,7 @@ module.exports = {
       // The name we specified will look like `@visma/rjsf-material-ui-v(4/5)` so get the `v(4/5)` off the end
       const version = options.name.substring(options.name.length - 2);
       // Strip off the `@rjsf` leaving `/material-ui-v(4/5)`
-      const packageName = options.name.replace('@visma', '');
+      const packageName = options.name.replace('@visma/rjsf-', '');
       // Find the location of the package name in the config's output file name
       const index = config.output.file.lastIndexOf(packageName);
       // Compute just the source directory from the config's output file name
@@ -71,7 +71,7 @@ module.exports = {
       config.plugins.push(copy({ targets, hook: 'writeBundle' }))
     } else if (config.output.format === 'esm') { // Check for the last run of the main `tsdx` build
       // Strip off the `@rjsf` leaving `/material-ui`
-      const packageName = options.name.replace('@visma', '');
+      const packageName = options.name.replace('@visma/rjsf-', '');
       // Find the location of the package name in the config's output file name
       const index = config.output.file.indexOf(`${packageName}.esm.js`);
       // Compute just the destination directory from the config's output file name
