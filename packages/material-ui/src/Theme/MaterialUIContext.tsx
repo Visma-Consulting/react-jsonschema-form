@@ -60,11 +60,11 @@ try {
   TextField = require('@material-ui/core/TextField').default;
   Typography = require('@material-ui/core/Typography').default;
   // icons
-  AddIcon = require('@material-ui/icons/Add').default;
-  ArrowDownwardIcon = require('@material-ui/icons/ArrowDownward').default;
-  ArrowUpwardIcon = require('@material-ui/icons/ArrowUpward').default;
-  ErrorIcon = require('@material-ui/icons/Error').default;
-  RemoveIcon = require('@material-ui/icons/Remove').default;
+  AddIcon = require('@mui/icons-material/Add').default;
+  ArrowDownwardIcon = require('@mui/icons-material/ArrowDownward').default;
+  ArrowUpwardIcon = require('@mui/icons-material/ArrowUpward').default;
+  ErrorIcon = require('@mui/icons-material/Error').default;
+  RemoveIcon = require('@mui/icons-material/Remove').default;
 } catch {
   // no-op
 }
