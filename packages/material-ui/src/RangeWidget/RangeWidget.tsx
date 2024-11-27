@@ -163,6 +163,7 @@ const RangeWidget = ({
         onBlur={_onBlur}
         onFocus={_onFocus}
         valueLabelDisplay="on"
+        defaultValue={value && isNaN(value) && value !== "" ? value : sliderProps.min }
         marks={marks}
         {...sliderProps}
       />
